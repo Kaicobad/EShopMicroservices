@@ -1,6 +1,26 @@
-﻿namespace Catalog.API.Products.CreateProduct
+﻿using BuildingBlocks.CQRS;
+using Catalog.API.Models;
+
+namespace Catalog.API.Products.CreateProduct;
+
+public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, Decimal Price) 
+    : ICommand<CreateProductResult>;  //IRequest Inherited From MediatR
+public record CreateProductResult(Guid Id);
+internal  class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
-    public class CreateProductHandler
+    public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
+        var product = new Product
+        {
+            ProductId = Guid.NewGuid(),
+            Name = command.Name,
+            Category = command.Category,
+            Description = command.Description,
+            ImageFile = command.ImageFile,
+            Price = command.Price
+        };
+        return new CreateProductResult(Guid.NewGuid());
+
     }
 }
+
