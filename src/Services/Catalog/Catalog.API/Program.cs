@@ -1,6 +1,3 @@
-
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +10,8 @@ builder.Services.AddDbContext<CatalogContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("CatalogConStr"));
 });
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
