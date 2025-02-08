@@ -1,8 +1,4 @@
-﻿
-using Catalog.API.AppDbContext;
-using System.Diagnostics.Eventing.Reader;
-
-namespace Catalog.API.Repository.Services;
+﻿namespace Catalog.API.Repository.Services;
 
 public class ProductRepository(CatalogContext _catalogContext) : IProductRepository
 {
@@ -73,6 +69,10 @@ public class ProductRepository(CatalogContext _catalogContext) : IProductReposit
         {
             var product = await _catalogContext.Products.Where(x => x.ProductId == ProductId).FirstOrDefaultAsync(cancellationToken);
 
+            if (product == null)
+            {
+                throw new ProductNotFoundException(ProductId);
+            }
             return product;
         }
         catch (Exception ex)
