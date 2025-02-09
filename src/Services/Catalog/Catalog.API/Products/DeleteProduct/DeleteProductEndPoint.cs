@@ -1,9 +1,4 @@
-﻿
-using Catalog.API.Products.CreateProduct;
-
-namespace Catalog.API.Products.DeleteProduct;
-
-
+﻿namespace Catalog.API.Products.DeleteProduct;
 public class DeleteProductEndPoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)

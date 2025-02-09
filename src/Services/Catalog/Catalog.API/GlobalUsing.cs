@@ -15,6 +15,10 @@ global using Catalog.API.Exceptions;
 global using System.Diagnostics.Eventing.Reader;
 global using BuildingBlocks.Behaviors;
 global using BuildingBlocks.Exceptions.Handler;
+global using Catalog.API.Products.CreateProduct;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+
+
 
 
 

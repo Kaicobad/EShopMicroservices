@@ -1,5 +1,4 @@
 ﻿namespace Catalog.API.Products.GetProductById;
-
 public class GetProductByIdEndPoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)

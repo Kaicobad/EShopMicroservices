@@ -81,12 +81,14 @@ public class ProductRepository(CatalogContext _catalogContext) : IProductReposit
         }
     }
 
-    public async Task<IEnumerable<Product>> GetProducts(CancellationToken cancellationToken)
+    public async Task<(IEnumerable<Product> Products, int TotalCount)> GetProducts(int pageNumber,int pageSize,CancellationToken cancellationToken)
     {
         try
         {
-            var products = await _catalogContext.Products.ToListAsync(cancellationToken);
-            return products;
+            var query = _catalogContext.Products.AsQueryable();
+            int totalCount = await query.CountAsync();
+            var productList = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
+             return (productList, totalCount);
         }
         catch (Exception ex)
         {
