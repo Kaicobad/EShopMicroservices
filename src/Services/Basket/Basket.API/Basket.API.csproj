@@ -28,8 +28,4 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\Updatable\Basket\" />
-  </ItemGroup>
-
 </Project>
