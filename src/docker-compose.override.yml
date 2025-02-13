@@ -14,8 +14,8 @@ services:
   basket.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8090
-      - ASPNETCORE_HTTPS_PORTS=8091
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=192.168.61.31;Port=4368;Database=BasketDB,User Id=sa;Password=123456;Include Error Detail = true
     ports:
       - "6001:8080"

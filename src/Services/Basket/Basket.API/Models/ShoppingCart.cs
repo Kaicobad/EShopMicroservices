@@ -10,7 +10,7 @@ public class ShoppingCart
         UserName = userName;
     }
     
-    public ShoppingCart()  //for mapping
+    public ShoppingCart()
     {
         
     }
