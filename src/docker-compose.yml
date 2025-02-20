@@ -8,4 +8,13 @@ services:
     image: ${DOCKER_REGISTRY-}basketapi 
     build:
       context: .
-      dockerfile: Services/Basket/Basket.API/Dockerfile 
+      dockerfile: Services/Basket/Basket.API/Dockerfile
+  postgres.database:
+      image: postgres:latest
+      volumes:
+        - G:\PostGreSQL\data:/var/lib/postgresql/data
+  pgadmin:
+      image: dpage/pgadmin4
+      volumes:
+        - G:\PostGreSQL\pg-admin\data:/var/lib/pgadmin
+  

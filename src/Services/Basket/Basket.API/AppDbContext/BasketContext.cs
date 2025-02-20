@@ -11,11 +11,9 @@ namespace Basket.API.AppDbContext
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ShoppingCartItem>().HasNoKey();
-            modelBuilder.Entity<ShoppingCart>().HasNoKey();
-
         }
-        DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
     }
 }

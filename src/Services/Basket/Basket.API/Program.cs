@@ -10,11 +10,15 @@ builder.Services.AddMediatR(configuration =>
 });
 
 builder.Services.AddCarter();
-// Add services to the container.
-builder.Services.AddDbContext<BasketContext>(option =>
+builder.Services.AddMarten(op =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("BasketConStr"));
-});
+    op.Connection(builder.Configuration.GetConnectionString("BasketConStr"));
+    op.Schema.For<ShoppingCart>().Identity(x => x.UserName);
+
+}).UseLightweightSessions();
+// Add services to the container.
+
+builder.Services.AddScoped<IBasketRepositoryService, BasketRepositoryService>();
 
 var app = builder.Build();
 

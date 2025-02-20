@@ -7,6 +7,14 @@ global using Basket.API.Models;
 global using FluentValidation;
 global using Basket.API.AppDbContext;
 global using BuildingBlocks.Behaviors;
+global using System.ComponentModel.DataAnnotations;
+global using Marten;
+global using BuildingBlocks.ExceptionHandler;
+global using Basket.API.Exceptions;
+global using Basket.API.Repository;
+
+
+
 
 
 

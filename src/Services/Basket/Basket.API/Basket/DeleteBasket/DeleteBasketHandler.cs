@@ -9,10 +9,11 @@ public class DeleteBasketCommandValidator : AbstractValidator<DeleteBasketComman
         RuleFor(x => x.UserName).NotEmpty().WithMessage("UserName Is Required");
     }
 }
-public class DeleteBasketCommandHandler : ICommandHandler<DeleteBasketCommand, DeleteBasketResult>
+public class DeleteBasketCommandHandler(IBasketRepositoryService _basketRepository) : ICommandHandler<DeleteBasketCommand, DeleteBasketResult>
 {
     public async Task<DeleteBasketResult> Handle(DeleteBasketCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var response = await _basketRepository.DeleteBasket(request.UserName,cancellationToken);
+        return new DeleteBasketResult(response);
     }
 }

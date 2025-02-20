@@ -8,7 +8,7 @@ public class GetBasketEndPoint : ICarterModule
         {
             var result = await sender.Send(new GetBasketQuery(userName));
             var response = result.Adapt<GetBasketResult>();
-            return response;
+            return Results.Ok(response);
         })
             .WithName("Get Basket")
             .Produces<GetBasketResult>(StatusCodes.Status200OK)
