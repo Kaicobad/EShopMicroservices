@@ -88,7 +88,7 @@ public class ProductRepository(CatalogContext _catalogContext) : IProductReposit
             var query = _catalogContext.Products.AsQueryable();
             int totalCount = await query.CountAsync();
             var productList = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
-             return (productList, totalCount);
+            return (productList, totalCount);
         }
         catch (Exception ex)
         {
